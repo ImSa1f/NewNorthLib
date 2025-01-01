@@ -1,3 +1,4 @@
+print('yo')
 
 if UseUi then
     local MacLib = { 
@@ -1666,8 +1667,8 @@ if UseUi then
                         buttonInteract.TextColor3 = Color3.fromRGB(255, 255, 255)
                         buttonInteract.TextSize = 13
                         buttonInteract.TextTransparency = 0.5
-                        buttonInteract.TextTruncate = Enum.TextTruncate.None
-                        buttonInteract.TextWrapped = true
+                        buttonInteract.TextTruncate = Enum.TextTruncate.AtEnd
+                        --buttonInteract.TextWrapped = true
                         --buttonInteract.TextTruncate = Enum.TextTruncate.AtEnd
                         buttonInteract.TextXAlignment = Enum.TextXAlignment.Left
                         buttonInteract.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
@@ -1925,7 +1926,7 @@ if UseUi then
                         sliderElements.BorderColor3 = Color3.fromRGB(0, 0, 0)
                         sliderElements.BorderSizePixel = 0
                         sliderElements.Position = UDim2.fromScale(1, 0)
-                        sliderElements.Size = UDim2.fromScale(1, 1)
+                        sliderElements.Size = UDim2.new(1, 0, 1, 0)
 
                         local sliderValue = Instance.new("TextBox")
                         sliderValue.Name = "SliderValue"
@@ -1963,6 +1964,7 @@ if UseUi then
 
                         sliderValue.Parent = sliderElements
 
+                        --[[
                         local sliderElementsUIListLayout = Instance.new("UIListLayout")
                         sliderElementsUIListLayout.Name = "SliderElementsUIListLayout"
                         sliderElementsUIListLayout.Padding = UDim.new(0, 20)
@@ -1970,6 +1972,15 @@ if UseUi then
                         sliderElementsUIListLayout.HorizontalAlignment = Enum.HorizontalAlignment.Right
                         sliderElementsUIListLayout.SortOrder = Enum.SortOrder.LayoutOrder
                         sliderElementsUIListLayout.VerticalAlignment = Enum.VerticalAlignment.Center
+                        sliderElementsUIListLayout.Parent = sliderElements
+                        --]]
+
+                        local sliderElementsUIListLayout = Instance.new("UIListLayout")
+                        sliderElementsUIListLayout.Name = "SliderElementsUIListLayout"
+                        sliderElementsUIListLayout.Padding = UDim.new(0, 10)
+                        sliderElementsUIListLayout.FillDirection = Enum.FillDirection.Vertical 
+                        sliderElementsUIListLayout.HorizontalAlignment = Enum.HorizontalAlignment.Right
+                        sliderElementsUIListLayout.SortOrder = Enum.SortOrder.LayoutOrder
                         sliderElementsUIListLayout.Parent = sliderElements
 
                         local sliderBar = Instance.new("ImageLabel")
