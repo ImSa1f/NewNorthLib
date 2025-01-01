@@ -1,3 +1,4 @@
+print('cool')
 
 if UseUi then
     local MacLib = { 
@@ -1963,7 +1964,7 @@ if UseUi then
 
                         sliderValue.Parent = sliderElements
 
-                        --[[
+
                         local sliderElementsUIListLayout = Instance.new("UIListLayout")
                         sliderElementsUIListLayout.Name = "SliderElementsUIListLayout"
                         sliderElementsUIListLayout.Padding = UDim.new(0, 20)
@@ -1972,15 +1973,7 @@ if UseUi then
                         sliderElementsUIListLayout.SortOrder = Enum.SortOrder.LayoutOrder
                         sliderElementsUIListLayout.VerticalAlignment = Enum.VerticalAlignment.Center
                         sliderElementsUIListLayout.Parent = sliderElements
-                        --]]
 
-                        local sliderElementsUIListLayout = Instance.new("UIListLayout")
-                        sliderElementsUIListLayout.Name = "SliderElementsUIListLayout"
-                        sliderElementsUIListLayout.Padding = UDim.new(0, 30)
-                        sliderElementsUIListLayout.FillDirection = Enum.FillDirection.Horizontal 
-                        sliderElementsUIListLayout.HorizontalAlignment = Enum.HorizontalAlignment.Right
-                        sliderElementsUIListLayout.SortOrder = Enum.SortOrder.LayoutOrder
-                        sliderElementsUIListLayout.Parent = sliderElements
 
                         local sliderBar = Instance.new("ImageLabel")
                         sliderBar.Name = "SliderBar"
@@ -2179,6 +2172,29 @@ if UseUi then
                         end
                         return SliderFunctions
                     end
+
+                    local function adjustSliderPosition()
+                        -- Get screen size
+                        local screenWidth = workspace.CurrentCamera.ViewportSize.X
+                        local sliderPosition = slider.AbsolutePosition.X
+                        local sliderWidth = slider.AbsoluteSize.X
+                    
+                        -- Check if the slider goes off-screen
+                        if sliderPosition + sliderWidth > screenWidth then
+                            slider.Position = UDim2.new(0, 0, slider.Position.Y.Scale + 0.05, 0) -- Move it down
+                        end
+                    end
+                    
+                    adjustSliderPosition()
+
+                    workspace.CurrentCamera:GetPropertyChangedSignal("ViewportSize"):Connect(function()
+                        adjustSliderPosition()
+                    end)
+
+                    section:GetPropertyChangedSignal("AbsoluteSize"):Connect(function()
+                        adjustSliderPosition()
+                    end)
+                    
 
                     function SectionFunctions:Input(Settings, Flag)
                         local InputFunctions = { Settings = Settings, IgnoreConfig = false, Class = "Input" }
