@@ -1,3 +1,4 @@
+print('yo')
 
 if UseUi then
     local MacLib = { 
@@ -2137,9 +2138,13 @@ if UseUi then
                     
                             if newBarWidth < 80 then
                                 sliderElementsUIListLayout.FillDirection = Enum.FillDirection.Vertical
+                                sliderValue.LayoutOrder = 1
+                                sliderBar.LayoutOrder = 2
                                 sliderBar.Size = UDim2.new(1, 0, 0, 3)
                             else
                                 sliderElementsUIListLayout.FillDirection = Enum.FillDirection.Horizontal
+                                sliderBar.LayoutOrder = 1
+                                sliderValue.LayoutOrder = 2
                                 sliderBar.Size = UDim2.new(0, newBarWidth, 0, 3)
                             end
                         end
@@ -2167,8 +2172,7 @@ if UseUi then
                         end
                         return SliderFunctions
                     end
-                    
-                    
+                
                     function SectionFunctions:Input(Settings, Flag)
                         local InputFunctions = { Settings = Settings, IgnoreConfig = false, Class = "Input" }
                         local input = Instance.new("Frame")
