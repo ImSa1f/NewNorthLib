@@ -1,3 +1,4 @@
+print('yo')
 
 if UseUi then
     local MacLib = { 
