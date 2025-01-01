@@ -1,3 +1,4 @@
+print('yo')
 
 if UseUi then
     local MacLib = { 
@@ -40,7 +41,7 @@ if UseUi then
         colorWheel = "rbxassetid://2849458409",
         colorTarget = "rbxassetid://73265255323268",
         grid = "rbxassetid://121484455191370",
-        globe = "rbxassetid://108952102602834",
+        globe = "rbxassetid://107491175530182",
         transform = "rbxassetid://90336395745819",
         dropdown = "rbxassetid://18865373378",
         sliderbar = "rbxassetid://18772615246",
