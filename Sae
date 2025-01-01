@@ -1,3 +1,4 @@
+print('yo')
 
 if UseUi then
     local MacLib = { 
@@ -2133,8 +2134,15 @@ if UseUi then
                             local sliderNameWidth = sliderName.AbsoluteSize.X
                             local totalWidth = sliderElements.AbsoluteSize.X
                     
-                            local newBarWidth = (totalWidth - (padding + sliderValueWidth + sliderNameWidth + 20)) / baseUIScale.Scale
-                            sliderBar.Size = UDim2.new(sliderBar.Size.X.Scale, newBarWidth, sliderBar.Size.Y.Scale, sliderBar.Size.Y.Offset)
+                            local newBarWidth = totalWidth - (padding + sliderValueWidth + sliderNameWidth + 20)
+                    
+                            if newBarWidth < 80 then
+                                sliderElementsUIListLayout.FillDirection = Enum.FillDirection.Vertical
+                                sliderBar.Size = UDim2.new(1, 0, 0, 3)
+                            else
+                                sliderElementsUIListLayout.FillDirection = Enum.FillDirection.Horizontal
+                                sliderBar.Size = UDim2.new(0, newBarWidth, 0, 3)
+                            end
                         end
                     
                         updateSliderBarSize()
@@ -2161,8 +2169,6 @@ if UseUi then
                         return SliderFunctions
                     end
                     
-                    
-
                     function SectionFunctions:Input(Settings, Flag)
                         local InputFunctions = { Settings = Settings, IgnoreConfig = false, Class = "Input" }
                         local input = Instance.new("Frame")
