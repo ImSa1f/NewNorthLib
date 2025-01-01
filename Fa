@@ -1,3 +1,4 @@
+print('yoo')
 
 if UseUi then
     local MacLib = { 
@@ -1450,33 +1451,32 @@ if UseUi then
                 tabSwitcher.BorderColor3 = Color3.fromRGB(0, 0, 0)
                 tabSwitcher.BorderSizePixel = 0
                 tabSwitcher.Position = UDim2.fromScale(0.5, 0)
-                tabSwitcher.Size = UDim2.new(1, -21, 0, 40) -- Modify to make dynamic scaling
-                
-                local tabIndex = 0
+                tabSwitcher.Size = UDim2.new(1, -21, 0, 40)
+
                 tabIndex += 1
                 tabSwitcher.LayoutOrder = tabIndex
-                
+
                 local tabSwitcherUICorner = Instance.new("UICorner")
                 tabSwitcherUICorner.Name = "TabSwitcherUICorner"
                 tabSwitcherUICorner.Parent = tabSwitcher
-                
+
                 local tabSwitcherUIStroke = Instance.new("UIStroke")
                 tabSwitcherUIStroke.Name = "TabSwitcherUIStroke"
                 tabSwitcherUIStroke.ApplyStrokeMode = Enum.ApplyStrokeMode.Border
                 tabSwitcherUIStroke.Color = Color3.fromRGB(255, 255, 255)
                 tabSwitcherUIStroke.Transparency = 1
                 tabSwitcherUIStroke.Parent = tabSwitcher
-                
+
                 local tabSwitcherUIListLayout = Instance.new("UIListLayout")
                 tabSwitcherUIListLayout.Name = "TabSwitcherUIListLayout"
-                tabSwitcherUIListLayout.Padding = UDim.new(0.01, 0) -- Scaled padding
+                tabSwitcherUIListLayout.Padding = UDim.new(0, 9)
                 tabSwitcherUIListLayout.FillDirection = Enum.FillDirection.Horizontal
                 tabSwitcherUIListLayout.SortOrder = Enum.SortOrder.LayoutOrder
                 tabSwitcherUIListLayout.VerticalAlignment = Enum.VerticalAlignment.Center
                 tabSwitcherUIListLayout.Parent = tabSwitcher
-                
+
                 local tabImage
-                
+
                 if Settings.Image then
                     tabImage = Instance.new("ImageLabel")
                     tabImage.Name = "TabImage"
@@ -1486,10 +1486,10 @@ if UseUi then
                     tabImage.BackgroundTransparency = 1
                     tabImage.BorderColor3 = Color3.fromRGB(0, 0, 0)
                     tabImage.BorderSizePixel = 0
-                    tabImage.Size = UDim2.fromScale(0.05, 0.05) -- Scaled size
+                    tabImage.Size = UDim2.fromOffset(18, 18)
                     tabImage.Parent = tabSwitcher
                 end
-                
+
                 local tabSwitcherName = Instance.new("TextLabel")
                 tabSwitcherName.Name = "TabSwitcherName"
                 tabSwitcherName.FontFace = Font.new(
@@ -1510,28 +1510,28 @@ if UseUi then
                 tabSwitcherName.BackgroundTransparency = 1
                 tabSwitcherName.BorderColor3 = Color3.fromRGB(0, 0, 0)
                 tabSwitcherName.BorderSizePixel = 0
-                tabSwitcherName.Size = UDim2.fromScale(0.9, 0.1) -- Adjusted scale
-                
+                tabSwitcherName.Size = UDim2.fromScale(1, 0)
                 tabSwitcherName.Parent = tabSwitcher
                 tabSwitcherName.LayoutOrder = 1
-                
+
                 local tabSwitcherUIPadding = Instance.new("UIPadding")
                 tabSwitcherUIPadding.Name = "TabSwitcherUIPadding"
-                tabSwitcherUIPadding.PaddingLeft = UDim.new(0.02, 0) -- Scaled padding
-                    tabSwitcherUIPadding.PaddingRight = UDim.new(0.03, 0) -- Scaled padding
-                    tabSwitcherUIPadding.PaddingTop = UDim.new(0.01, 0)
+                tabSwitcherUIPadding.PaddingLeft = UDim.new(0, 24)
+                tabSwitcherUIPadding.PaddingRight = UDim.new(0, 35)
+                tabSwitcherUIPadding.PaddingTop = UDim.new(0, 1)
                 tabSwitcherUIPadding.Parent = tabSwitcher
-                
+
                 tabSwitcher.Parent = sectionTabSwitchers
-                
+
+
                 local elements1 = Instance.new("Frame")
                 elements1.Name = "Elements"
                 elements1.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
                 elements1.BackgroundTransparency = 1
                 elements1.BorderColor3 = Color3.fromRGB(0, 0, 0)
                 elements1.BorderSizePixel = 0
-                elements1.Position = UDim2.fromOffset(0, 63)
-                elements1.Size = UDim2.new(1, 0, 1, -63)
+                elements1.Position = UDim2.fromScale(0, 0.1) -- Adjusted to scale with the screen
+                elements1.Size = UDim2.new(1, 0, 0.9, -63) -- Scales vertically relative to the screen
                 elements1.ClipsDescendants = true
 
                 local elementsUIPadding = Instance.new("UIPadding")
@@ -1539,6 +1539,7 @@ if UseUi then
                 elementsUIPadding.PaddingRight = UDim.new(0, 5)
                 elementsUIPadding.PaddingTop = UDim.new(0, 10)
                 elementsUIPadding.PaddingBottom = UDim.new(0, 10)
+                elementsUIPadding.PaddingLeft = UDim.new(0.01, 0) -- Added left padding for better scaling
                 elementsUIPadding.Parent = elements1
 
                 local elementsScrolling = Instance.new("ScrollingFrame")
@@ -1547,7 +1548,7 @@ if UseUi then
                 elementsScrolling.BottomImage = ""
                 elementsScrolling.CanvasSize = UDim2.new()
                 elementsScrolling.ScrollBarImageTransparency = 0.5
-                elementsScrolling.ScrollBarThickness = 1
+                elementsScrolling.ScrollBarThickness = 5 -- Slightly thicker for touch compatibility
                 elementsScrolling.TopImage = ""
                 elementsScrolling.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
                 elementsScrolling.BackgroundTransparency = 1
@@ -1555,12 +1556,13 @@ if UseUi then
                 elementsScrolling.BorderSizePixel = 0
                 elementsScrolling.Size = UDim2.fromScale(1, 1)
                 elementsScrolling.ClipsDescendants = false
+                elementsScrolling.Parent = elements1
 
                 local elementsScrollingUIPadding = Instance.new("UIPadding")
                 elementsScrollingUIPadding.Name = "ElementsScrollingUIPadding"
                 elementsScrollingUIPadding.PaddingBottom = UDim.new(0, 5)
-                elementsScrollingUIPadding.PaddingLeft = UDim.new(0, 11)
-                elementsScrollingUIPadding.PaddingRight = UDim.new(0, 3)
+                elementsScrollingUIPadding.PaddingLeft = UDim.new(0.02, 0) -- Scales padding relative to screen width
+                elementsScrollingUIPadding.PaddingRight = UDim.new(0.02, 0) -- Consistent padding on both sides
                 elementsScrollingUIPadding.PaddingTop = UDim.new(0, 5)
                 elementsScrollingUIPadding.Parent = elementsScrolling
 
@@ -1570,6 +1572,10 @@ if UseUi then
                 elementsScrollingUIListLayout.FillDirection = Enum.FillDirection.Horizontal
                 elementsScrollingUIListLayout.SortOrder = Enum.SortOrder.LayoutOrder
                 elementsScrollingUIListLayout.Parent = elementsScrolling
+
+                -- Ensure elements1 is parented to an appropriate container, such as ScreenGui
+                elements1.Parent = script.Parent -- Update `script.Parent` to the appropriate container
+
 
                 local left = Instance.new("Frame")
                 left.Name = "Left"
