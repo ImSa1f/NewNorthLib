@@ -1,3 +1,5 @@
+print('yo')
+
 
 if UseUi then
     local MacLib = { 
@@ -2167,6 +2169,7 @@ if UseUi then
                         end
                         return SliderFunctions
                     end
+                    
                     
                     function SectionFunctions:Input(Settings, Flag)
                         local InputFunctions = { Settings = Settings, IgnoreConfig = false, Class = "Input" }
